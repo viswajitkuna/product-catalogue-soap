@@ -1,0 +1,38 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://impl.soap.sample.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://soap.sample.com/" name="productSoap" targetNamespace="http://impl.soap.sample.com/">
+    <wsdl:import location="http://localhost:8080/product-catalogue-soap/services/products/?wsdl=ProductSoapEndPoints.wsdl" namespace="http://soap.sample.com/"></wsdl:import>
+    <wsdl:binding name="productSoapSoapBinding" type="ns1:ProductSoapEndPoints">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getAllProducts">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getAllProducts">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getAllProductsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="purchaseProduct">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="purchaseProduct">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="purchaseProductResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getProduct">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="getProduct">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getProductResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="productSoap">
+        <wsdl:port binding="tns:productSoapSoapBinding" name="ProductSoapEndPointsImplPort">
+            <soap:address location="http://localhost:8080/product-catalogue-soap/services/products/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
