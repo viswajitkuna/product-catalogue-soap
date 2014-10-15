@@ -2,39 +2,51 @@ package com.sample.dao.impl;
 
 import com.sample.dao.ProductDao;
 import com.sample.dao.domain.Product;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation of {@link com.sample.dao.ProductDao}
+ */
 @Repository
 public class ProductDaoImpl implements ProductDao {
 
     @PersistenceContext(unitName = "productCatalogue")
     private EntityManager entityManager;
 
+    /**
+     * Sets new entityManager.
+     *
+     * @param entityManager New value of entityManager.
+     */
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Product> getAllProducts() {
         Query query = entityManager.createQuery("FROM Product");
         return query.getResultList();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Product getProduct(long id) {
         return getProductDetails(id);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Product purchaseProduct(long id, int quantity) {
         int updatedQuantity = 0;
@@ -48,6 +60,12 @@ public class ProductDaoImpl implements ProductDao {
         return product;
     }
 
+    /**
+     * Retrieves the details of the selected product.
+     *
+     * @param id Id of the selected product.
+     * @return (link com.sample.dao.domain.Product} corresponding to the selected id.
+     */
     private Product getProductDetails(long id) {
         Query query = entityManager.createQuery("FROM Product where id = :id");
         query.setParameter("id", id);

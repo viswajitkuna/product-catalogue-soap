@@ -4,15 +4,17 @@ import com.sample.service.ProductCatalogueService;
 import com.sample.service.dto.ProductDetails;
 import com.sample.soap.ProductSoapEndPoints;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
-import org.springframework.stereotype.Component;
 
 import javax.jws.WebService;
 import java.util.List;
 
+/**
+ * Implementation of {@link com.sample.soap.ProductSoapEndPoints}
+ */
 @WebService(endpointInterface = "com.sample.soap.ProductSoapEndPoints", serviceName = "productSoap")
 public class ProductSoapEndPointsImpl implements ProductSoapEndPoints {
 
+    @Autowired
     private ProductCatalogueService productCatalogueService;
 
     public void setProductCatalogueService(ProductCatalogueService productCatalogueService) {

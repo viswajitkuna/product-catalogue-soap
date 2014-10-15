@@ -17,8 +17,6 @@
     <bean id="productCatalogueService" class="com.sample.service.impl.ProductCatalogueServiceImpl">
         <property name="productDao" ref="productDaoImpl" />
     </bean>
-    <bean id="productRest" class="com.sample.soap.impl.ProductSoapEndPointsImpl">
-        <property name="productCatalogueService" ref="productCatalogueService"/>
-    </bean>
+
     <jaxws:endpoint id="soapEndPoint" address="/products" implementor="com.sample.soap.impl.ProductSoapEndPointsImpl"/>
 </beans>

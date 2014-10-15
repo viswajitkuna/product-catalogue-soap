@@ -16,6 +16,13 @@
             <groupId>product-catalogue-soap</groupId>
             <artifactId>dao</artifactId>
         </dependency>
+        <dependency>
+            <groupId>product-catalogue-soap</groupId>
+            <artifactId>dao</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
